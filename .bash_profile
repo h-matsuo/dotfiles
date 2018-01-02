@@ -5,10 +5,10 @@
 ################################################################################
 
 #==================================================
-# Include '~/.bashrc'
+# Include "~/.bashrc"
 #==================================================
 if [ -n "$BASH_VERSION" ]; then # if running bash
-  if [ -f "$HOME/.bashrc" ]; then
-    . "$HOME/.bashrc"
+  if [ -f "${HOME}/.bashrc" ]; then
+    . "${HOME}/.bashrc"
   fi
 fi
