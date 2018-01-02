@@ -23,6 +23,9 @@ if ! type git >/dev/null 2>&1; then
   exit 1
 fi
 
+# Remember current directory
+CURRENT_DIR=$(pwd)
+
 # Print description
 echo "$DOTFILES_DESC"
 
@@ -37,6 +40,9 @@ cd $(basename "$DOTFILES_DIR")
 
 # Run etc/setup.sh
 . etc/setup.sh
+
+# Return to current directory
+cd $CURRENT_DIR
 
 # Restart login shell
 exec $SHELL -l
