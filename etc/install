@@ -37,3 +37,6 @@ cd $(basename "$DOTFILES_DIR")
 
 # Run etc/setup.sh
 . etc/setup.sh
+
+# Restart login shell
+exec $SHELL -l
