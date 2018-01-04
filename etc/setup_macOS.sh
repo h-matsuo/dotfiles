@@ -13,4 +13,4 @@ brew install bash git wget tree
 brew cask install sublime-text docker virtualbox vagrant
 
 # Install development fonts
-brew cask install font-myrica
+brew cask install font-ricty-diminished
