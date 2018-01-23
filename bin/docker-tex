@@ -1,0 +1,43 @@
+#!/bin/sh
+
+# This script will use paperist's Docker image.
+# https://hub.docker.com/r/paperist/alpine-texlive-ja/
+
+NAME="paperist/alpine-texlive-ja"
+TAG="latest"
+
+# Check whether docker command exists
+if ! type docker >/dev/null 2>&1; then
+  echo "ERROR: Please install docker at first then re-run this script." >&2
+  exit 1
+fi
+
+# Check whether option is given
+if [[ -z "$@" ]]; then
+  echo "ERROR: Specify more than one option."
+  echo "See '${0} --help'."
+  exit 1
+fi
+
+# Print usage
+if [[ "$1" = "--help" ]]; then
+  echo "
+Usage: ${0} <COMMAND>...
+
+A helper tool to run TeXLive commands using Docker
+
+Eamples:
+
+  ${0} ptex2pdf -l main
+                    Process main.tex (pLaTeX document) with ptex2pdf command.
+                    This command will create main.pdf directly.
+
+  ${0} pbibtex main
+                    Process main.aux with pbibtex command.
+"
+  exit
+fi
+
+docker run -t --rm \
+  -v "$(pwd)":/workdir \
+  ${NAME}:${TAG} "$@"
