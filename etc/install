@@ -19,7 +19,7 @@ DOTFILES_DESC='
 
 # Check whether git command exists
 if ! type git >/dev/null 2>&1; then
-  echo "ERROR: Please install git command at first then re-run this script." >&2
+  echo "ERROR: Please install git command at first, and then re-run this script." >&2
   exit 1
 fi
 

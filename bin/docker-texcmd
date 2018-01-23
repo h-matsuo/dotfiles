@@ -6,34 +6,44 @@
 NAME="paperist/alpine-texlive-ja"
 TAG="latest"
 
+CMD_NAME="$(basename "$0")"
+
 # Check whether docker command exists
 if ! type docker >/dev/null 2>&1; then
-  echo "ERROR: Please install docker at first then re-run this script." >&2
+  echo "ERROR: Please install docker at first, and then re-run this script." >&2
   exit 1
 fi
 
 # Check whether option is given
 if [[ -z "$@" ]]; then
   echo "ERROR: Specify more than one option."
-  echo "See '${0} --help'."
+  echo "See '$0 --help'."
   exit 1
 fi
 
 # Print usage
-if [[ "$1" = "--help" ]]; then
+if [[ "$1" = "-h" || "$1" = "--help" ]]; then
   echo "
-Usage: ${0} <COMMAND>...
+Usage: $CMD_NAME <COMMAND>...
 
 A helper tool to run TeXLive commands using Docker
 
 Examples:
 
-  ${0} ptex2pdf -l main
-                    Process main.tex (pLaTeX document) with ptex2pdf command.
-                    This command will create main.pdf directly.
+  $CMD_NAME platex main
+                    Process main.tex (pLaTeX document) with platex command.
 
-  ${0} pbibtex main
+  $CMD_NAME pbibtex main
                     Process main.aux with pbibtex command.
+
+  $CMD_NAME dvipdfmx main
+                    Process main.dvi with dvipdfmx command.
+
+Tips:
+
+  $CMD_NAME ptex2pdf -l main
+                    This command processes main.tex (pLaTeX document) and
+                    creates main.pdf directly.
 "
   exit
 fi
