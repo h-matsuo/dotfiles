@@ -49,5 +49,5 @@ Tips:
 fi
 
 docker run -t --rm \
-  -v "$(pwd)":/workdir \
-  ${NAME}:${TAG} "$@"
+  -v "$(pwd):/workdir" \
+  "${NAME}:${TAG}" "$@"
