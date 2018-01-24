@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 # This script will use paperist's Docker image.
 # https://hub.docker.com/r/paperist/alpine-texlive-ja/
