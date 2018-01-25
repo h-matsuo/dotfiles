@@ -1,0 +1,12 @@
+#!/bin/sh
+
+# Check whether required command exists
+if ! type json_pp >/dev/null 2>&1; then
+  echo "ERROR: Please install json_pp command at first then re-run this script." >&2
+  exit 1
+fi
+
+# URL="https://registry.hub.docker.com/v2/repositories/${1}/tags/"
+URL="https://registry.hub.docker.com/v1/repositories/${1}/tags"
+
+curl -s "$URL" | json_pp
