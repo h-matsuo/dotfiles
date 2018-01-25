@@ -1,12 +1,42 @@
-#!/bin/sh
+#!/usr/bin/env bash
+
+CMD_NAME="$(basename "$0")"
 
 # Check whether required command exists
-if ! type json_pp >/dev/null 2>&1; then
-  echo "ERROR: Please install json_pp command at first then re-run this script." >&2
+if ! type jq >/dev/null 2>&1; then
+  echo "ERROR: Please install jq command at first, and then re-run this script." >&2
   exit 1
+fi
+
+# Check whether option is given
+if [[ -z "$1" ]]; then
+  echo "ERROR: Specify Docker image name." >&2
+  echo "See '$0 --help'." >&2
+  exit 1
+fi
+
+# Print usage
+if [[ "$1" = "-h" || "$1" = "--help" ]]; then
+  echo "
+Usage: $CMD_NAME <Docker image name>
+
+List all tags for a Docker image in Docker Hub
+
+Examples:
+
+  $CMD_NAME node    List all tags for 'node' image
+"
+  exit
 fi
 
 # URL="https://registry.hub.docker.com/v2/repositories/${1}/tags/"
 URL="https://registry.hub.docker.com/v1/repositories/${1}/tags"
 
-curl -s "$URL" | json_pp
+RESULT=$(curl -s "$URL")
+
+if [[ $RESULT = '"Resource not found"' ]]; then
+  echo "ERROR: $1: No such Docker image in Docker Hub." >&2
+  exit 1
+fi
+
+echo $RESULT | jq -r .[].name

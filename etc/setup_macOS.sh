@@ -7,7 +7,7 @@
 brew tap caskroom/cask
 
 # Install development tools
-brew install bash git wget tree
+brew install bash git wget tree jq
 
 # Install development apps
 brew cask install sublime-text docker virtualbox vagrant
