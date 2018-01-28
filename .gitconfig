@@ -2,7 +2,7 @@
 	name = Hiroyuki Matsuo
 	email = h-matsuo@ist.osaka-u.ac.jp
 [core]
-	editor = subl -w
+	editor = vim
 	quotepath = false # 日本語ファイル名が文字化けする問題を解消
 [alias]
 	lg = log --oneline --graph --decorate
