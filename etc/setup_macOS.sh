@@ -10,7 +10,10 @@ brew tap caskroom/cask
 brew install bash git wget tree jq
 
 # Install development apps
-brew cask install sublime-text docker virtualbox vagrant
+brew cask install visual-studio-code docker virtualbox vagrant
+
+# Install Caskroom-fonts
+brew tap caskroom/fonts
 
 # Install development fonts
 brew cask install font-ricty-diminished
