@@ -17,7 +17,7 @@ fi
 # Check whether option is given
 if [[ -z "$@" ]]; then
   echo "ERROR: Specify more than one option." >&2
-  echo "See '$CMD_NAME --help'." >&2
+  echo "See \`$CMD_NAME --help\`." >&2
   exit 1
 fi
 

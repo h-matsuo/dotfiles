@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+
+CMD_NAME="$(basename "$0")"
+
+# # Print usage
+# if [[ "$1" = "-h" || "$1" = "--help" ]]; then
+#   echo "
+# Usage: $CMD_NAME <USERNAME> <PASSWORD>
+# "
+#   exit
+# fi
+
+# # Check whether option is given
+# if [[ -z "$2" ]]; then
+#   echo "ERROR: Specify username and password." >&2
+#   echo "See \`$CMD_NAME --help\`." >&2
+#   exit 1
+# fi
+
+# set -e
+
+echo "
+ERROR: This command is not implemented yet.
+
+References:
+  - https://srad.jp/~hylom/journal/441679/
+  - https://qiita.com/okapon_pon/items/e95b2fba379fb0a00278
+  - https://qiita.com/matsubo/items/50a2530e6d6f9ac0645e
+"

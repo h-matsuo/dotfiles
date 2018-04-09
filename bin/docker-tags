@@ -11,7 +11,7 @@ fi
 # Check whether option is given
 if [[ -z "$1" ]]; then
   echo "ERROR: Specify Docker image name." >&2
-  echo "See '$CMD_NAME --help'." >&2
+  echo "See \`$CMD_NAME --help\`." >&2
   exit 1
 fi
 
