@@ -2,7 +2,7 @@
 
 ################################################################################
 # VARIABLES                                                                    #
-DOTFILES_REPOS="https://github.com/h-matsuo/dotfiles.git"
+DOTFILES_REPOS='https://github.com/h-matsuo/dotfiles.git'
 DOTFILES_DIR="${HOME}/.dotfiles"; export DOTFILES_DIR
 DOTFILES_DESC='
        _       _    __ _ _
@@ -19,12 +19,12 @@ DOTFILES_DESC='
 
 # Check whether git command exists
 if ! type git >/dev/null 2>&1; then
-  echo "ERROR: Please install git command at first, and then re-run this script." >&2
+  echo 'ERROR: Please install git command at first, and then re-run this script.' >&2
   exit 1
 fi
 
 # Remember current directory
-CURRENT_DIR=$(pwd)
+CURRENT_DIR="$(pwd)"
 
 # Print description
 echo "$DOTFILES_DESC"
@@ -42,7 +42,7 @@ cd $(basename "$DOTFILES_DIR")
 . etc/setup.sh
 
 # Return to current directory
-cd $CURRENT_DIR
+cd "$CURRENT_DIR"
 
 # Restart login shell
-exec $SHELL -l
+exec "$SHELL" -l
