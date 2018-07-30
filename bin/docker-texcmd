@@ -48,6 +48,6 @@ Tips:
   exit
 fi
 
-docker run -t --rm \
+docker run -it --rm \
   -v "$(pwd):/workdir" \
   "${NAME}:${TAG}" "$@"
