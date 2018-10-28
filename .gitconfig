@@ -1,6 +1,6 @@
 [user]
 	name = Hiroyuki Matsuo
-	email = h-matsuo@ist.osaka-u.ac.jp
+	email = h.matsuo.engineer@gmail.com
 [core]
 	editor = vim
 	quotepath = false # 日本語ファイル名が文字化けする問題を解消
