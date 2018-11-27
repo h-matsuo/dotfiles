@@ -44,6 +44,20 @@ unset PROMPT_SSH
 # export LC_MESSAGES="ja_JP.utf8"
 
 #==================================================
+# Share bash_history between multiple terminals
+# http://iandeth.dyndns.org/mt/ian/archives/000651.html
+#==================================================
+
+function share_history {
+  history -a
+  history -c
+  history -r
+}
+PROMPT_COMMAND="share_history;$PROMPT_COMMAND"
+shopt -u histappend
+export HISTSIZE=9999
+
+#==================================================
 # Include "~/.mybashrc"
 #==================================================
 if [ -f "${HOME}/.mybashrc" ]; then
