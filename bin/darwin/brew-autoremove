@@ -1,6 +1,10 @@
 #!/usr/bin/env bash
 
-echo 'Checking dependency tree...'
+BOLD=$(tput bold)
+NORMAL=$(tput sgr0)
+GREEN=$(tput setaf 2)
+
+echo "${GREEN}==>${NORMAL} ${BOLD}Checking dependency tree...${NORMAL}"
 
 cd /tmp
 
@@ -14,7 +18,7 @@ fi
 
 echo "$TO_BE_CLEANED_UP"
 
-read -p 'Do you want to continue? [Y/n]: ' INPUT
+read -p "${GREEN}==>${NORMAL} ${BOLD}Do you want to continue? [Y/n] ${NORMAL}" INPUT
 
 if [[ $INPUT != 'Y' && $INPUT != 'y' ]]; then
   echo 'Abort.'
