@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+
+echo 'Checking dependency tree...'
+
+cd /tmp
+
+brew bundle dump --force
+
+TO_BE_CLEANED_UP=$(brew bundle cleanup)
+
+if [[ -z $TO_BE_CLEANED_UP ]]; then
+  exit
+fi
+
+echo "$TO_BE_CLEANED_UP"
+
+read -p 'Do you want to continue? [Y/n]: ' INPUT
+
+if [[ $INPUT != 'Y' && $INPUT != 'y' ]]; then
+  echo 'Abort.'
+  exit
+fi
+
+brew bundle cleanup --force
