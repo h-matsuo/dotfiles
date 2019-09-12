@@ -6,11 +6,9 @@ GREEN=$(tput setaf 2)
 
 echo "${GREEN}==>${NORMAL} ${BOLD}Checking dependency tree...${NORMAL}"
 
-cd /tmp
+BREW_FILE=$(brew bundle dump --file=/dev/stdout)
 
-brew bundle dump --force
-
-TO_BE_CLEANED_UP=$(brew bundle cleanup)
+TO_BE_CLEANED_UP=$(echo "$BREW_FILE" | brew bundle cleanup --file=/dev/stdin)
 
 if [[ -z $TO_BE_CLEANED_UP ]]; then
   exit
@@ -25,4 +23,4 @@ if [[ $INPUT != 'Y' && $INPUT != 'y' ]]; then
   exit
 fi
 
-brew bundle cleanup --force
+echo "$BREW_FILE" | brew bundle cleanup --file=/dev/stdin --force
