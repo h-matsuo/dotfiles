@@ -5,6 +5,7 @@
 	editor = vim
 	quotepath = false # 日本語ファイル名が文字化けする問題を解消
 	ignorecase = false # ファイル名の大文字･小文字を検知
+	pager = delta --dark
 [alias]
 	lg = log --oneline --graph --decorate
 [url "git@github.com:"]
