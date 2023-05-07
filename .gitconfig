@@ -1,3 +1,6 @@
+# Original settings
+####################
+
 [alias]
 	lg = log --oneline --graph --decorate
 
@@ -6,9 +9,6 @@
 	quotepath = false # 日本語ファイル名が文字化けする問題を解消
 	ignorecase = false # ファイル名の大文字･小文字を検知
 	pager = delta --dark
-
-[delta]
-	features = side-by-side line-numbers decorations
 
 [filter "lfs"]
 	clean = git-lfs clean -- %f
@@ -28,3 +28,10 @@
 [user]
 	name = Hiroyuki Matsuo
 	email = h.matsuo.work@gmail.com
+
+
+# 3rd party tool's settings
+############################
+
+[delta]
+	features = side-by-side line-numbers decorations
