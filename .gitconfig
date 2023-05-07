@@ -1,6 +1,5 @@
-[user]
-	name = Hiroyuki Matsuo
-	email = h.matsuo.work@gmail.com
+[alias]
+	lg = log --oneline --graph --decorate
 
 [core]
 	editor = vim
@@ -11,17 +10,21 @@
 [delta]
 	features = side-by-side line-numbers decorations
 
-[alias]
-	lg = log --oneline --graph --decorate
-
-[url "git@github.com:"]
-	insteadOf = https://github.com/
-
-[pull]
-	ff = only
-
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
+
+[interactive]
+	diffFilter = delta --color-only
+
+[pull]
+	ff = only
+
+[url "git@github.com:"]
+	insteadOf = https://github.com/
+
+[user]
+	name = Hiroyuki Matsuo
+	email = h.matsuo.work@gmail.com
