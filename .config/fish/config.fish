@@ -16,7 +16,7 @@ end
 
 # Fast Node Manager (fnm)
 if type fnm > /dev/null 2>&1
-  fnm env | source
+  fnm env --use-on-cd | source
 end
 
 # direnv
@@ -64,6 +64,16 @@ end
 # Jetbrains
 if [ -d "$HOME/Library/Application Support/JetBrains/Toolbox/scripts" ]
   fish_add_path "$HOME/Library/Application Support/JetBrains/Toolbox/scripts"
+end
+
+# rbenv
+if type rbenv > /dev/null 2>&1
+  status --is-interactive; and rbenv init - fish | source
+end
+
+# Google Cloud SDK
+if [ -f "$HOME/google-cloud-sdk/path.fish.inc" ]
+  . "$HOME/google-cloud-sdk/path.fish.inc"
 end
 
 # tmux
