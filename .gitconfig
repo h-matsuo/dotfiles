@@ -1,14 +1,27 @@
 [user]
 	name = Hiroyuki Matsuo
-	email = h.matsuo.engineer@gmail.com
+	email = h.matsuo.work@gmail.com
+
 [core]
 	editor = vim
 	quotepath = false # 日本語ファイル名が文字化けする問題を解消
 	ignorecase = false # ファイル名の大文字･小文字を検知
 	pager = delta --dark
+
+[delta]
+	features = side-by-side line-numbers decorations
+
 [alias]
 	lg = log --oneline --graph --decorate
+
 [url "git@github.com:"]
-    insteadOf = https://github.com/
+	insteadOf = https://github.com/
+
 [pull]
 	ff = only
+
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
