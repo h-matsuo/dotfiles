@@ -43,7 +43,10 @@ end
 
 # Aliases
 if type exa > /dev/null 2>&1
-  alias ls "exa --icons"
+  alias ls 'exa --icons'
+end
+if type ghq > /dev/null 2>&1
+  alias cd-ghq 'cd (ghq list -p | fzf)'
 end
 
 # mysql-client
@@ -83,8 +86,10 @@ if type tmux > /dev/null 2>&1
   # c.f. https://unix.stackexchange.com/questions/1045
   set -g TERM screen-256color
 
-  # Start tmux
+  # tmux の中では tmux を起動しない
   if not set -q TMUX
-    exec tmux
+    # セッションが起動済みなら attach; そうでないなら新しいセッションを開始
+    # c.f. https://unix.stackexchange.com/questions/103898
+    exec tmux new-session -A -s main
   end
 end
