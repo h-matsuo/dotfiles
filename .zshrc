@@ -3,7 +3,7 @@ if [ -d /opt/homebrew ]; then
   eval "$(/opt/homebrew/bin/brew shellenv)"
 
   ## zsh-completions
-  if type brew &>/dev/null; then
+  if [ -d $(brew --prefix)/share/zsh-completions ]; then
     FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
     autoload -Uz compinit
     compinit
@@ -38,6 +38,11 @@ fi
 # starship
 if command -v starship > /dev/null; then
   eval "$(starship init zsh)"
+fi
+
+# Jetbrains
+if [ -d "$HOME/Library/Application Support/JetBrains/Toolbox/scripts" ]; then
+  export PATH="$PATH:$HOME/Library/Application Support/JetBrains/Toolbox/scripts"
 fi
 
 # Aliases
