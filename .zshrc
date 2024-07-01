@@ -21,6 +21,11 @@ if [ -d /opt/homebrew ]; then
 
 fi
 
+# mise (dev tools, env vars, task runner)
+if command -v mise > /dev/null; then
+  eval "$(mise activate zsh --shims)"
+fi
+
 # fuzzy finder (fzf)
 if command -v fzf > /dev/null; then
   # Use new key bindings
