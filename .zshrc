@@ -1,3 +1,6 @@
+# プロセス間でコマンド履歴を共有
+setopt share_history
+
 # Homebrew
 if [ -d /opt/homebrew ]; then
   eval "$(/opt/homebrew/bin/brew shellenv)"
@@ -17,6 +20,14 @@ if [ -d /opt/homebrew ]; then
   ## zsh-syntax-highlighting
   if [ -d $(brew --prefix)/share/zsh-syntax-highlighting ]; then
     source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+  fi
+
+  ## asdf (The Multiple Runtime Version Manager)
+  if command -v asdf > /dev/null; then
+    . $(brew --prefix asdf)/libexec/asdf.sh
+  fi
+  if [ -d $HOME/.asdf/plugins/java ]; then
+    . $HOME/.asdf/plugins/java/set-java-home.zsh
   fi
 
 fi
