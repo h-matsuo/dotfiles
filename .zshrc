@@ -42,13 +42,15 @@ if command -v fzf > /dev/null; then
   # Use new key bindings
   export FZF_LEGACY_KEYBINDINGS=0
   # '^r' for search command history
-  function fzf-select-history() {
-    BUFFER=$(history -n -r 1 | fzf --query "$LBUFFER" --reverse)
-    CURSOR=$#BUFFER
-    zle reset-prompt
-  }
-  zle -N fzf-select-history
-  bindkey '^r' fzf-select-history
+  if command -v awk > /dev/null; then
+    function fzf-select-history() {
+      BUFFER=$(history -n -r 1 | awk '!seen[$0]++' | fzf --query "$LBUFFER" --reverse)
+      CURSOR=$#BUFFER
+      zle reset-prompt
+    }
+    zle -N fzf-select-history
+    bindkey '^r' fzf-select-history
+  fi
 fi
 
 # starship
