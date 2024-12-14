@@ -15,8 +15,12 @@ if type scheme > /dev/null 2>&1
 end
 
 # Fast Node Manager (fnm)
-if type fnm > /dev/null 2>&1
-  fnm env --use-on-cd | source
+#if type fnm > /dev/null 2>&1
+#  fnm env --use-on-cd | source
+#end
+
+# Volta
+if [ -d "$HOME/.volta" ]
 end
 
 # direnv
@@ -26,7 +30,7 @@ end
 
 # Java
 if [ -f /usr/libexec/java_home ]
-  set -g JAVA_HOME (/usr/libexec/java_home -F -v 20)
+  set -g JAVA_HOME (/usr/libexec/java_home -F -v 17)
   fish_add_path "$JAVA_HOME/bin"
 end
 
@@ -42,8 +46,8 @@ if type starship > /dev/null 2>&1
 end
 
 # Aliases
-if type exa > /dev/null 2>&1
-  alias ls 'exa --icons'
+if type eza > /dev/null 2>&1
+  alias ls 'eza --icons'
 end
 if type ghq > /dev/null 2>&1
   alias cd-ghq 'cd (ghq list -p | fzf)'
