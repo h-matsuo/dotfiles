@@ -1,5 +1,42 @@
-# プロセス間でコマンド履歴を共有
-setopt share_history
+# History 関連の設定
+HISTFILE="$HOME/.zsh_history" # ヒストリを保存するファイル
+HISTSIZE=50000                # メモリに保存するヒストリの件数
+SAVEHIST=50000                # ファイルに保存するヒストリの件数
+setopt APPEND_HISTORY         # ヒストリファイルは上書きではなく追記
+setopt HIST_IGNORE_ALL_DUPS   # 重複するヒストリは古い方を削除
+setopt HIST_IGNORE_DUPS       # 直前と同じコマンドはヒストリに追加しない
+setopt HIST_IGNORE_SPACE      # スペースで始めるとヒストリに追加しない
+setopt HIST_REDUCE_BLANKS     # 余分なスペースを削除してヒストリに保存
+setopt HIST_NO_STORE          # history コマンドはヒストリに追加しない
+setopt INC_APPEND_HISTORY     # コマンド履歴を即座にヒストリファイルに追加
+setopt SHARE_HISTORY          # プロセス間でヒストリを共有
+
+# ヒストリに追加したくないコマンドのブラックリスト（正規表現）
+HIST_BLACKLIST_REGEX=(
+  '^cd'
+  '^ls'
+  '^brew home'
+  '^brew info'
+  '^brew search'
+  '^brew uninstall'
+  '^git branch -D'
+  '^git commit'
+  '^git push .*(-f|--force)'
+  '^git reset .*--hard'
+  '^git switch -c'
+)
+
+# 各コマンドを実行する直前に実行されるフック
+# 戻り値が 0 以外ならヒストリに追加されない
+zshaddhistory() {
+  # ブラックリストに一致するコマンドはヒストリに追加しない
+  for regex in "${HIST_BLACKLIST_REGEX[@]}"; do
+    if [[ "$1" =~ $regex ]]; then
+      return 1
+    fi
+  done
+  return 0
+}
 
 # Homebrew
 if [ -d /opt/homebrew ]; then
