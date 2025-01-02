@@ -62,6 +62,9 @@ fi
 if command -v ghq > /dev/null; then
   alias cd-ghq='cd $(ghq list -p | fzf)'
 fi
+if command -v safe-rm > /dev/null; then
+  alias rm='safe-rm'
+fi
 
 # tmux
 if command -v tmux > /dev/null; then
