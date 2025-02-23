@@ -1,0 +1,8 @@
+font-family = Cica
+font-size = 16
+background-opacity = 0.8
+background-blur = 4
+cursor-style-blink = false
+window-padding-x = 6
+window-padding-balance = true
+confirm-close-surface = false
